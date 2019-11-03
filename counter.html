@@ -17,12 +17,24 @@
             number: 1
           }
         }
+        increment(event){
+            this.setState({
+                number: this.state.number+1
+            })
+        }
+        decrement(event){
+            this.setState({
+                number: Math.max(1, this.state.number-1)
+            })
+        }
         render() {
           return (
           <div>
             <img src={this.props.image} alt="Bloc Logo"/>
             <h1>Current Program: {this.props.label}</h1>
             <h2>Current Week: {this.state.number}</h2>
+            <button onClick={this.increment.bind(this)}>Increment</button>
+            <button onClick={this.decrement.bind(this)}>Decremenet</button>
             <p>Current Date: {this.props.date.toLocaleDateString()}</p>
             </div>
           );
@@ -30,7 +42,7 @@
       }
       const info = {
         date: new Date(),
-        image: 'https://avatars0.githubusercontent.com/u/1441485?v=4&s=280',
+        image: 'https://i.ibb.co/g9b3NkB/alex.png',
       }
       Counter.defaultProps = {
         label: "Web Developer Track"
